@@ -5,15 +5,28 @@ namespace SMS_Service.Model
 {
     public class Student : ISerializable
     {
-        private int ID { get; set; }
-        private string FirstName { get; set; }
-        private string LastName { get; set; }
-        private string Email { get; set; }
-        private string DateOfBirth { get; set; }
-        private Education education { get; set; }
-        private double GPA { get; set; }
+        public int ID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string DateOfBirth { get; set; }
+        public StudentEducation Education { get; set; }
+        public double GPA { get; set; }
+        public bool IsDeleted { get; set; }
 
         public Student() { }
+
+        public Student(int iD, string firstName, string lastName, string email, string dateOfBirth, StudentEducation education, double gPA, bool isDeleted)
+        {
+            ID = iD;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            DateOfBirth = dateOfBirth;
+            Education = education;
+            GPA = gPA;
+            IsDeleted = isDeleted;
+        }
 
         public string[] ToCSV()
         {
@@ -24,8 +37,9 @@ namespace SMS_Service.Model
                 LastName,
                 Email,
                 DateOfBirth,
-                education.ToString(),
-                GPA.ToString()
+                Education.ToString(),
+                GPA.ToString(),
+                IsDeleted.ToString(),
             };
             return csvValues;
         }
@@ -37,16 +51,15 @@ namespace SMS_Service.Model
             LastName = values[2];
             Email = values[3];
             DateOfBirth = values[4];
-            education = (Education)Enum.Parse(typeof(Education), values[5]);
+            Education = (StudentEducation)Enum.Parse(typeof(StudentEducation), values[5]);
             GPA  = Convert.ToDouble(values[6]);
+            IsDeleted = Convert.ToBoolean(values[7]);
         }
     }
 
-
-    public enum Education
+    public enum StudentEducation
     {
         HighSchool,
         University
     }
-
 }
