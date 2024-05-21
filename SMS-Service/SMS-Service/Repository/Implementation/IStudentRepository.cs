@@ -1,11 +1,15 @@
-﻿using System;
+﻿using SMS_Service.Model;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace SMS_Service.Repository.Implementation
 {
-    public class IStudentRepository
+    public interface IStudentRepository
     {
+        int NextId();
+        void Create(Student student);
+        void Update(Student student);
+        void Delete(int id);
+        List<Student> GetAll();
+        Student GetById(int id);
     }
 }
