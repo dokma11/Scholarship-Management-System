@@ -1,5 +1,6 @@
 ﻿using SMS_Service.Serialization;
 using System;
+using System.Collections.Generic;
 
 namespace SMS_Service.Model
 {
@@ -16,8 +17,12 @@ namespace SMS_Service.Model
         public StudentEducation Education { get; set; }
         public int StudentLimit { get; set; }
         public bool IsDeleted { get; set; }
+        public List<ScholarshipApplication> ScholarshipApplications { get; set; }
 
-        public Scholarship() { }
+        public Scholarship()
+        {
+            ScholarshipApplications = new List<ScholarshipApplication>();
+        }
 
         public Scholarship(int iD, string name, string description, double amount, DateTime deadline, double gPARequirement, int minAge, int maxAge, StudentEducation education, int studentLimit, bool isDeleted)
         {
