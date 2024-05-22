@@ -1,5 +1,6 @@
 ﻿using SMS_Service.Serialization;
 using System;
+using System.Collections.Generic;
 
 namespace SMS_Service.Model
 {
@@ -13,8 +14,12 @@ namespace SMS_Service.Model
         public StudentEducation Education { get; set; }
         public double GPA { get; set; }
         public bool IsDeleted { get; set; }
+        public List<ScholarshipApplication> ScholarshipApplications { get; set; }
 
-        public Student() { }
+        public Student() 
+        {
+            ScholarshipApplications = new List<ScholarshipApplication>();
+        }
 
         public Student(int iD, string firstName, string lastName, string email, string dateOfBirth, StudentEducation education, double gPA, bool isDeleted)
         {
@@ -39,7 +44,7 @@ namespace SMS_Service.Model
                 DateOfBirth,
                 Education.ToString(),
                 GPA.ToString(),
-                IsDeleted.ToString(),
+                IsDeleted.ToString()
             };
             return csvValues;
         }
