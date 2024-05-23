@@ -8,18 +8,19 @@ namespace SMS_Service.Model
         public int ID { get; set; }
         public ScholarshipApplicationStatus Status { get; set; }
         public DateTime SubmissionDate { get; set; }
-        public DateTime ApprovalDate { get; set; }
+        public DateTime? ApprovalDate { get; set; }
         public int StudentId { get; set; }
         public int ScholarshipId { get; set; }
 
         public ScholarshipApplication() { }
 
-        public ScholarshipApplication(int iD, ScholarshipApplicationStatus status, DateTime submissionDate, DateTime approvalDate)
+        public ScholarshipApplication(int iD, ScholarshipApplicationStatus status, DateTime submissionDate, int studentId, int scholarshipId)
         {
             ID = iD;
             Status = status;
             SubmissionDate = submissionDate;
-            ApprovalDate = approvalDate;
+            StudentId = studentId;
+            ScholarshipId = scholarshipId;
         }
 
         public string[] ToCSV()

@@ -11,11 +11,11 @@ namespace SMS_Service.Model
         public string Description { get; set; }
         public double Amount { get; set; }
         public DateTime Deadline { get; set; }
-        public double GPARequirement { get; set; }
-        public int MinAge { get; set; }
-        public int MaxAge { get; set; }
+        public double? GPARequirement { get; set; }
+        public int? MinAge { get; set; }
+        public int? MaxAge { get; set; }
         public StudentEducation Education { get; set; }
-        public int StudentLimit { get; set; }
+        public int? StudentLimit { get; set; }
         public bool IsDeleted { get; set; }
         public List<ScholarshipApplication> ScholarshipApplications { get; set; }
 
