@@ -29,7 +29,7 @@ namespace SMS_Service.Repository
             _fileHandler.Save(_students);
         }
 
-        public void Update(Student student) 
+        public void Update(Student student)
         {
             int index = _students.FindIndex(p => p.ID == student.ID);
             if (index != -1)
@@ -40,7 +40,7 @@ namespace SMS_Service.Repository
             _fileHandler.Save(_students);
         }
 
-        public void Delete(int id) 
+        public void Delete(int id)
         {
             int index = _students.FindIndex(p => p.ID == id);
             if (index != -1)
