@@ -1,15 +1,17 @@
-﻿using SMS_Service.Contract;
-using SMS_Service.Model;
+﻿using SMS_Service.Model;
 using SMS_Service.Service;
 using System.Collections.Generic;
 
-namespace SMS_Service
+namespace SMS_Service.Contract
 {
     public class ScholarshipApplicationContract : IScholarshipApplicationContract
     {
         private readonly ScholarshipApplicationService _service;
 
-        public ScholarshipApplicationContract() { }
+        public ScholarshipApplicationContract() 
+        { 
+            _service = new ScholarshipApplicationService();
+        }
 
         public void ApplyForScholarship(int studentID, int scholarshipID)
         {

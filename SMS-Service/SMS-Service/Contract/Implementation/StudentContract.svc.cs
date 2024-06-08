@@ -1,18 +1,23 @@
-﻿using SMS_Service.Contract;
-using SMS_Service.Model;
+﻿using SMS_Service.Model;
 using SMS_Service.Service;
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace SMS_Service
+namespace SMS_Service.Contract
 {
     public class StudentContract : IStudentContract
     {
         private readonly StudentService _studentService;
 
-        public StudentContract() { }
-
-        public void Create(Student student)
+        public StudentContract() 
         {
+            _studentService = new StudentService();
+        }
+
+        public async Task Create(Student student)
+        {
+            student.ScholarshipApplications = new List<ScholarshipApplication>();
             _studentService.Create(student);
         }
 

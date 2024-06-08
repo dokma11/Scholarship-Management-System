@@ -1,6 +1,7 @@
 ﻿using SMS_Service.Model;
 using System.Collections.Generic;
 using System.ServiceModel;
+using System.Threading.Tasks;
 
 namespace SMS_Service.Contract
 {
@@ -8,7 +9,7 @@ namespace SMS_Service.Contract
     public interface IStudentContract
     {
         [OperationContract]
-        void Create(Student student);
+        Task Create(Student student);
         
         [OperationContract]
         void Update(Student student);
