@@ -9,7 +9,7 @@ namespace SMS_Service.FileHandler
     {
         private readonly Serializer<ScholarshipApplication> _serializer;
 
-        private const string FilePath = "../../../Data/applications.csv";
+        private const string FilePath = "/Data/applications.csv";
 
         private List<ScholarshipApplication> _applications;
 
