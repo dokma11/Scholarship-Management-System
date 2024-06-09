@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ScholarshipApplicationReference
+namespace ScholarshipApplicationContractService
 {
     using System.Runtime.Serialization;
     
@@ -24,7 +24,7 @@ namespace ScholarshipApplicationReference
         
         private int ScholarshipIdField;
         
-        private ScholarshipApplicationReference.ScholarshipApplicationStatus StatusField;
+        private ScholarshipApplicationContractService.ScholarshipApplicationStatus StatusField;
         
         private int StudentIdField;
         
@@ -70,7 +70,7 @@ namespace ScholarshipApplicationReference
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public ScholarshipApplicationReference.ScholarshipApplicationStatus Status
+        public ScholarshipApplicationContractService.ScholarshipApplicationStatus Status
         {
             get
             {
@@ -125,7 +125,7 @@ namespace ScholarshipApplicationReference
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ScholarshipApplicationReference.IScholarshipApplicationContract")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ScholarshipApplicationContractService.IScholarshipApplicationContract")]
     public interface IScholarshipApplicationContract
     {
         
@@ -137,7 +137,7 @@ namespace ScholarshipApplicationReference
         System.Threading.Tasks.Task<string> CheckApplicationStatusAsync(int applicationID);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScholarshipApplicationContract/GetPending", ReplyAction="http://tempuri.org/IScholarshipApplicationContract/GetPendingResponse")]
-        System.Threading.Tasks.Task<ScholarshipApplicationReference.ScholarshipApplication[]> GetPendingAsync();
+        System.Threading.Tasks.Task<ScholarshipApplicationContractService.ScholarshipApplication[]> GetPendingAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScholarshipApplicationContract/AcceptScholarshipApplication", ReplyAction="http://tempuri.org/IScholarshipApplicationContract/AcceptScholarshipApplicationRe" +
             "sponse")]
@@ -149,13 +149,13 @@ namespace ScholarshipApplicationReference
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
-    public interface IScholarshipApplicationContractChannel : ScholarshipApplicationReference.IScholarshipApplicationContract, System.ServiceModel.IClientChannel
+    public interface IScholarshipApplicationContractChannel : ScholarshipApplicationContractService.IScholarshipApplicationContract, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
-    public partial class ScholarshipApplicationContractClient : System.ServiceModel.ClientBase<ScholarshipApplicationReference.IScholarshipApplicationContract>, ScholarshipApplicationReference.IScholarshipApplicationContract
+    public partial class ScholarshipApplicationContractClient : System.ServiceModel.ClientBase<ScholarshipApplicationContractService.IScholarshipApplicationContract>, ScholarshipApplicationContractService.IScholarshipApplicationContract
     {
         
         /// <summary>
@@ -208,7 +208,7 @@ namespace ScholarshipApplicationReference
             return base.Channel.CheckApplicationStatusAsync(applicationID);
         }
         
-        public System.Threading.Tasks.Task<ScholarshipApplicationReference.ScholarshipApplication[]> GetPendingAsync()
+        public System.Threading.Tasks.Task<ScholarshipApplicationContractService.ScholarshipApplication[]> GetPendingAsync()
         {
             return base.Channel.GetPendingAsync();
         }
@@ -246,7 +246,7 @@ namespace ScholarshipApplicationReference
         {
             if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IScholarshipApplicationContract))
             {
-                return new System.ServiceModel.EndpointAddress("http://localhost:54086/ScholarshipApplicationService");
+                return new System.ServiceModel.EndpointAddress("http://localhost:54087/ScholarshipApplicationService");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }

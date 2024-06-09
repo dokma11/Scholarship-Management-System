@@ -7,50 +7,82 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace StudentContractReference
+namespace ScholarshipContractService
 {
     using System.Runtime.Serialization;
     
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Student", Namespace="http://schemas.datacontract.org/2004/07/SMS_Service.Model")]
-    public partial class Student : object
+    [System.Runtime.Serialization.DataContractAttribute(Name="Scholarship", Namespace="http://schemas.datacontract.org/2004/07/SMS_Service.Model")]
+    public partial class Scholarship : object
     {
         
-        private string DateOfBirthField;
+        private double AmountField;
         
-        private StudentContractReference.StudentEducation EducationField;
+        private System.DateTime DeadlineField;
         
-        private string EmailField;
+        private string DescriptionField;
         
-        private string FirstNameField;
+        private ScholarshipContractService.StudentEducation EducationField;
         
-        private double GPAField;
+        private System.Nullable<double> GPARequirementField;
         
         private int IDField;
         
         private bool IsDeletedField;
         
-        private string LastNameField;
+        private System.Nullable<int> MaxAgeField;
         
-        private StudentContractReference.ScholarshipApplication[] ScholarshipApplicationsField;
+        private System.Nullable<int> MinAgeField;
+        
+        private string NameField;
+        
+        private ScholarshipContractService.ScholarshipApplication[] ScholarshipApplicationsField;
+        
+        private System.Nullable<int> StudentLimitField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string DateOfBirth
+        public double Amount
         {
             get
             {
-                return this.DateOfBirthField;
+                return this.AmountField;
             }
             set
             {
-                this.DateOfBirthField = value;
+                this.AmountField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public StudentContractReference.StudentEducation Education
+        public System.DateTime Deadline
+        {
+            get
+            {
+                return this.DeadlineField;
+            }
+            set
+            {
+                this.DeadlineField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description
+        {
+            get
+            {
+                return this.DescriptionField;
+            }
+            set
+            {
+                this.DescriptionField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ScholarshipContractService.StudentEducation Education
         {
             get
             {
@@ -63,41 +95,15 @@ namespace StudentContractReference
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Email
+        public System.Nullable<double> GPARequirement
         {
             get
             {
-                return this.EmailField;
+                return this.GPARequirementField;
             }
             set
             {
-                this.EmailField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FirstName
-        {
-            get
-            {
-                return this.FirstNameField;
-            }
-            set
-            {
-                this.FirstNameField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public double GPA
-        {
-            get
-            {
-                return this.GPAField;
-            }
-            set
-            {
-                this.GPAField = value;
+                this.GPARequirementField = value;
             }
         }
         
@@ -128,20 +134,46 @@ namespace StudentContractReference
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string LastName
+        public System.Nullable<int> MaxAge
         {
             get
             {
-                return this.LastNameField;
+                return this.MaxAgeField;
             }
             set
             {
-                this.LastNameField = value;
+                this.MaxAgeField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public StudentContractReference.ScholarshipApplication[] ScholarshipApplications
+        public System.Nullable<int> MinAge
+        {
+            get
+            {
+                return this.MinAgeField;
+            }
+            set
+            {
+                this.MinAgeField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name
+        {
+            get
+            {
+                return this.NameField;
+            }
+            set
+            {
+                this.NameField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public ScholarshipContractService.ScholarshipApplication[] ScholarshipApplications
         {
             get
             {
@@ -150,6 +182,19 @@ namespace StudentContractReference
             set
             {
                 this.ScholarshipApplicationsField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> StudentLimit
+        {
+            get
+            {
+                return this.StudentLimitField;
+            }
+            set
+            {
+                this.StudentLimitField = value;
             }
         }
     }
@@ -178,7 +223,7 @@ namespace StudentContractReference
         
         private int ScholarshipIdField;
         
-        private StudentContractReference.ScholarshipApplicationStatus StatusField;
+        private ScholarshipContractService.ScholarshipApplicationStatus StatusField;
         
         private int StudentIdField;
         
@@ -224,7 +269,7 @@ namespace StudentContractReference
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public StudentContractReference.ScholarshipApplicationStatus Status
+        public ScholarshipContractService.ScholarshipApplicationStatus Status
         {
             get
             {
@@ -279,34 +324,34 @@ namespace StudentContractReference
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="StudentContractReference.IStudentContract")]
-    public interface IStudentContract
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ScholarshipContractService.IScholarshipContract")]
+    public interface IScholarshipContract
     {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentContract/Create", ReplyAction="http://tempuri.org/IStudentContract/CreateResponse")]
-        System.Threading.Tasks.Task CreateAsync(StudentContractReference.Student student);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScholarshipContract/Create", ReplyAction="http://tempuri.org/IScholarshipContract/CreateResponse")]
+        System.Threading.Tasks.Task CreateAsync(ScholarshipContractService.Scholarship scholarship);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentContract/Update", ReplyAction="http://tempuri.org/IStudentContract/UpdateResponse")]
-        System.Threading.Tasks.Task UpdateAsync(StudentContractReference.Student student);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScholarshipContract/Update", ReplyAction="http://tempuri.org/IScholarshipContract/UpdateResponse")]
+        System.Threading.Tasks.Task UpdateAsync(ScholarshipContractService.Scholarship scholarship);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentContract/Delete", ReplyAction="http://tempuri.org/IStudentContract/DeleteResponse")]
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScholarshipContract/Delete", ReplyAction="http://tempuri.org/IScholarshipContract/DeleteResponse")]
         System.Threading.Tasks.Task DeleteAsync(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentContract/GetAll", ReplyAction="http://tempuri.org/IStudentContract/GetAllResponse")]
-        System.Threading.Tasks.Task<StudentContractReference.Student[]> GetAllAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScholarshipContract/GetAll", ReplyAction="http://tempuri.org/IScholarshipContract/GetAllResponse")]
+        System.Threading.Tasks.Task<ScholarshipContractService.Scholarship[]> GetAllAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IStudentContract/GetById", ReplyAction="http://tempuri.org/IStudentContract/GetByIdResponse")]
-        System.Threading.Tasks.Task<StudentContractReference.Student> GetByIdAsync(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IScholarshipContract/GetById", ReplyAction="http://tempuri.org/IScholarshipContract/GetByIdResponse")]
+        System.Threading.Tasks.Task<ScholarshipContractService.Scholarship> GetByIdAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
-    public interface IStudentContractChannel : StudentContractReference.IStudentContract, System.ServiceModel.IClientChannel
+    public interface IScholarshipContractChannel : ScholarshipContractService.IScholarshipContract, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
-    public partial class StudentContractClient : System.ServiceModel.ClientBase<StudentContractReference.IStudentContract>, StudentContractReference.IStudentContract
+    public partial class ScholarshipContractClient : System.ServiceModel.ClientBase<ScholarshipContractService.IScholarshipContract>, ScholarshipContractService.IScholarshipContract
     {
         
         /// <summary>
@@ -316,47 +361,47 @@ namespace StudentContractReference
         /// <param name="clientCredentials">The client credentials</param>
         static partial void ConfigureEndpoint(System.ServiceModel.Description.ServiceEndpoint serviceEndpoint, System.ServiceModel.Description.ClientCredentials clientCredentials);
         
-        public StudentContractClient() : 
-                base(StudentContractClient.GetDefaultBinding(), StudentContractClient.GetDefaultEndpointAddress())
+        public ScholarshipContractClient() : 
+                base(ScholarshipContractClient.GetDefaultBinding(), ScholarshipContractClient.GetDefaultEndpointAddress())
         {
-            this.Endpoint.Name = EndpointConfiguration.BasicHttpBinding_IStudentContract.ToString();
+            this.Endpoint.Name = EndpointConfiguration.BasicHttpBinding_IScholarshipContract.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public StudentContractClient(EndpointConfiguration endpointConfiguration) : 
-                base(StudentContractClient.GetBindingForEndpoint(endpointConfiguration), StudentContractClient.GetEndpointAddress(endpointConfiguration))
-        {
-            this.Endpoint.Name = endpointConfiguration.ToString();
-            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
-        }
-        
-        public StudentContractClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
-                base(StudentContractClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
+        public ScholarshipContractClient(EndpointConfiguration endpointConfiguration) : 
+                base(ScholarshipContractClient.GetBindingForEndpoint(endpointConfiguration), ScholarshipContractClient.GetEndpointAddress(endpointConfiguration))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public StudentContractClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(StudentContractClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        public ScholarshipContractClient(EndpointConfiguration endpointConfiguration, string remoteAddress) : 
+                base(ScholarshipContractClient.GetBindingForEndpoint(endpointConfiguration), new System.ServiceModel.EndpointAddress(remoteAddress))
         {
             this.Endpoint.Name = endpointConfiguration.ToString();
             ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
         }
         
-        public StudentContractClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public ScholarshipContractClient(EndpointConfiguration endpointConfiguration, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(ScholarshipContractClient.GetBindingForEndpoint(endpointConfiguration), remoteAddress)
+        {
+            this.Endpoint.Name = endpointConfiguration.ToString();
+            ConfigureEndpoint(this.Endpoint, this.ClientCredentials);
+        }
+        
+        public ScholarshipContractClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress)
         {
         }
         
-        public System.Threading.Tasks.Task CreateAsync(StudentContractReference.Student student)
+        public System.Threading.Tasks.Task CreateAsync(ScholarshipContractService.Scholarship scholarship)
         {
-            return base.Channel.CreateAsync(student);
+            return base.Channel.CreateAsync(scholarship);
         }
         
-        public System.Threading.Tasks.Task UpdateAsync(StudentContractReference.Student student)
+        public System.Threading.Tasks.Task UpdateAsync(ScholarshipContractService.Scholarship scholarship)
         {
-            return base.Channel.UpdateAsync(student);
+            return base.Channel.UpdateAsync(scholarship);
         }
         
         public System.Threading.Tasks.Task DeleteAsync(int id)
@@ -364,12 +409,12 @@ namespace StudentContractReference
             return base.Channel.DeleteAsync(id);
         }
         
-        public System.Threading.Tasks.Task<StudentContractReference.Student[]> GetAllAsync()
+        public System.Threading.Tasks.Task<ScholarshipContractService.Scholarship[]> GetAllAsync()
         {
             return base.Channel.GetAllAsync();
         }
         
-        public System.Threading.Tasks.Task<StudentContractReference.Student> GetByIdAsync(int id)
+        public System.Threading.Tasks.Task<ScholarshipContractService.Scholarship> GetByIdAsync(int id)
         {
             return base.Channel.GetByIdAsync(id);
         }
@@ -381,7 +426,7 @@ namespace StudentContractReference
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IStudentContract))
+            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IScholarshipContract))
             {
                 System.ServiceModel.BasicHttpBinding result = new System.ServiceModel.BasicHttpBinding();
                 result.MaxBufferSize = int.MaxValue;
@@ -395,27 +440,27 @@ namespace StudentContractReference
         
         private static System.ServiceModel.EndpointAddress GetEndpointAddress(EndpointConfiguration endpointConfiguration)
         {
-            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IStudentContract))
+            if ((endpointConfiguration == EndpointConfiguration.BasicHttpBinding_IScholarshipContract))
             {
-                return new System.ServiceModel.EndpointAddress("http://localhost:54086/StudentService");
+                return new System.ServiceModel.EndpointAddress("http://localhost:54087/ScholarshipService");
             }
             throw new System.InvalidOperationException(string.Format("Could not find endpoint with name \'{0}\'.", endpointConfiguration));
         }
         
         private static System.ServiceModel.Channels.Binding GetDefaultBinding()
         {
-            return StudentContractClient.GetBindingForEndpoint(EndpointConfiguration.BasicHttpBinding_IStudentContract);
+            return ScholarshipContractClient.GetBindingForEndpoint(EndpointConfiguration.BasicHttpBinding_IScholarshipContract);
         }
         
         private static System.ServiceModel.EndpointAddress GetDefaultEndpointAddress()
         {
-            return StudentContractClient.GetEndpointAddress(EndpointConfiguration.BasicHttpBinding_IStudentContract);
+            return ScholarshipContractClient.GetEndpointAddress(EndpointConfiguration.BasicHttpBinding_IScholarshipContract);
         }
         
         public enum EndpointConfiguration
         {
             
-            BasicHttpBinding_IStudentContract,
+            BasicHttpBinding_IScholarshipContract,
         }
     }
 }
