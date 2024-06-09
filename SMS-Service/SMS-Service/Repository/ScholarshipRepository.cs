@@ -53,7 +53,7 @@ namespace SMS_Service.Repository
 
         public List<Scholarship> GetAll()
         {
-            return _scholarships;
+            return _scholarships.Where(s => s.IsDeleted == false).ToList();
         }
 
         public Scholarship GetById(int id)

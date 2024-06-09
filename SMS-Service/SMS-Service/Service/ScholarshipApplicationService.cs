@@ -1,6 +1,7 @@
 ﻿using SMS_Service.Model;
 using SMS_Service.Repository.Implementation;
 using System.Collections.Generic;
+using SMS_Service.Repository;
 
 namespace SMS_Service.Service
 {
@@ -8,7 +9,10 @@ namespace SMS_Service.Service
     {
         private readonly IScholarshipApplicationRepository _repository;
 
-        public ScholarshipApplicationService() { }
+        public ScholarshipApplicationService() 
+        {
+            _repository = new ScholarshipApplicationRepository();
+        }
 
         public void ApplyForScholarship(int studentID, int scholarshipID)
         {
