@@ -1,6 +1,7 @@
 ﻿using SMS_Service.FileHandler;
 using SMS_Service.Model;
 using SMS_Service.Repository.Implementation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -25,8 +26,8 @@ namespace SMS_Service.Repository
         public void Create(int studentID, int scholarshipID)
         {
             ScholarshipApplication application = new ScholarshipApplication(NextId(), ScholarshipApplicationStatus.Pending,
-                System.DateTime.Now, studentID, scholarshipID);
-
+                DateTime.Now, studentID, scholarshipID);
+            application.ApprovalDate = DateTime.Now;
             _applications.Add(application);
             _fileHandler.Save(_applications);
         }

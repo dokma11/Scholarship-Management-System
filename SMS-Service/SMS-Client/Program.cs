@@ -1,5 +1,6 @@
-﻿using StudentContractService;
+﻿using ScholarshipApplicationContractService;
 using ScholarshipContractService;
+using StudentContractService;
 
 namespace SMS_Client
 {
@@ -102,7 +103,7 @@ namespace SMS_Client
                         else if (Console.ReadLine() == "2")
                         {
                             updateStudent.Education = StudentContractService.StudentEducation.University;
-                        }                        
+                        }
                         client.UpdateAsync(updateStudent).Wait();
                         Console.WriteLine("Student update request sent.");
                         break;
@@ -114,7 +115,7 @@ namespace SMS_Client
                         break;
                     case 4:
                         var students = client.GetAllAsync();
-                        if(students.Result.Length == 0)
+                        if (students.Result.Length == 0)
                         {
                             Console.WriteLine("There are no students");
                         }
@@ -132,7 +133,7 @@ namespace SMS_Client
                         int idToGet = int.Parse(Console.ReadLine());
                         var studentById = client.GetByIdAsync(idToGet);
                         Console.WriteLine($"ID: {studentById.Result.ID}, Name: {studentById.Result.FirstName}, Surname: {studentById.Result.LastName}, " +
-                            $"GPA: {studentById.Result.GPA}, Email: {studentById.Result.Email}, Date of birth: {studentById.Result.DateOfBirth}"); 
+                            $"GPA: {studentById.Result.GPA}, Email: {studentById.Result.Email}, Date of birth: {studentById.Result.DateOfBirth}");
                         break;
                     case 6:
                         Console.WriteLine("Client is closing...");
@@ -171,9 +172,9 @@ namespace SMS_Client
                         Console.WriteLine("Enter deadline: ");
                         newScholarship.Deadline = DateTime.Parse(Console.ReadLine());
                         Console.WriteLine("Enter GPA requirement: ");
-                        newScholarship.GPARequirement = double.Parse(Console.ReadLine());                        
+                        newScholarship.GPARequirement = double.Parse(Console.ReadLine());
                         Console.WriteLine("Enter minimum age: ");
-                        newScholarship.MinAge = int.Parse(Console.ReadLine());                        
+                        newScholarship.MinAge = int.Parse(Console.ReadLine());
                         Console.WriteLine("Enter maximum age: ");
                         newScholarship.MaxAge = int.Parse(Console.ReadLine());
                         Console.WriteLine("Enter education: 1. High school 2. University");
@@ -231,7 +232,7 @@ namespace SMS_Client
                         break;
                     case 4:
                         var scholarships = client.GetAllAsync();
-                        if(scholarships.Result.Length == 0)
+                        if (scholarships.Result.Length == 0)
                         {
                             Console.WriteLine("There are no scholarships");
                         }
@@ -251,7 +252,7 @@ namespace SMS_Client
                         var scholarshipById = client.GetByIdAsync(idToGet);
                         Console.WriteLine($"ID: {scholarshipById.Result.ID}, Name: {scholarshipById.Result.Name}, Description: {scholarshipById.Result.Description}, Amount: {scholarshipById.Result.Amount}, " +
                                                         $"Deadline: {scholarshipById.Result.Deadline}, GPA requirement: {scholarshipById.Result.GPARequirement}, Minimum age: {scholarshipById.Result.MinAge}, Maximum age: {scholarshipById.Result.MaxAge}, " +
-                                                        $"Student limit: {scholarshipById.Result.StudentLimit}, Education: {scholarshipById.Result.Education}"); 
+                                                        $"Student limit: {scholarshipById.Result.StudentLimit}, Education: {scholarshipById.Result.Education}");
                         break;
                     case 6:
                         Console.WriteLine("Client is closing...");
@@ -263,9 +264,74 @@ namespace SMS_Client
             }
         }
 
-        private static void HandleApplicationManagement()
+        private static async void HandleApplicationManagement()
         {
-            // Similar structure to HandleStudentOperations
+            Console.WriteLine("\nYou have successfully chosen scholarship application operations!\n");
+            Console.WriteLine("Choose one of the scholarship application operations: ");
+            Console.WriteLine("1. Apply for scholarship");
+            Console.WriteLine("2. Check application status");
+            Console.WriteLine("3. List pending scholarship applications");
+            Console.WriteLine("4. Accept scholarship application");
+            Console.WriteLine("5. Reject scholarship application");
+            Console.WriteLine("6. Exit");
+
+            int scholarshipNumber = int.Parse(Console.ReadLine());
+            using (var client = new ScholarshipApplicationContractClient())
+            {
+                switch (scholarshipNumber)
+                {
+                    case 1:
+                        var newApplication = new ScholarshipApplicationContractService.ScholarshipApplication();
+                        Console.WriteLine("Enter student id: ");
+                        int studentId = int.Parse(Console.ReadLine());
+                        Console.WriteLine("Enter scholarship id: ");
+                        int scholarshipId = int.Parse(Console.ReadLine());
+                        client.ApplyForScholarshipAsync(studentId, scholarshipId).Wait();
+                        Console.WriteLine("Scholarship application successfully sent");
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter application id: ");
+                        int applicationId = int.Parse(Console.ReadLine());
+                        var application = await client.CheckApplicationStatusAsync(applicationId);
+                        Console.WriteLine(application);
+                        break;
+                    case 3:
+                        Console.WriteLine("List pending applications");
+                        var pending = await client.GetPendingAsync();
+                        if (pending.Length == 0)
+                        {
+                            Console.WriteLine("No pending applications left");
+                        }
+                        else
+                        {
+                            foreach (var p in pending)
+                            {
+                                Console.WriteLine($"Application id: {p.ID}, Student id: {p.StudentId}, Scholarship id: {p.ScholarshipId}," +
+                                    $"Submission date: {p.SubmissionDate}");
+                            }
+                        }
+                        break;
+                    case 4:
+                        Console.WriteLine("Enter application id: ");
+                        var appId = int.Parse(Console.ReadLine());
+                        client.AcceptScholarshipApplicationAsync(appId).Wait();
+                        Console.WriteLine("Accept application request sent");
+                        break;
+                    case 5:
+
+                        Console.WriteLine("Enter application id: ");
+                        var rejectAppId = int.Parse(Console.ReadLine());
+                        client.RejectScholarshipApplicationAsync(rejectAppId).Wait();
+                        Console.WriteLine("Reject application request sent");
+                        break;
+                    case 6:
+                        Console.WriteLine("Client is closing...");
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option. Please try again.");
+                        break;
+                }
+            }
         }
     }
 }

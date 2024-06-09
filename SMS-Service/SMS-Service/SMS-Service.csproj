@@ -64,7 +64,6 @@
     <Content Include="Contract\Implementation\ScholarshipContract.svc" />
     <Content Include="Contract\Implementation\ScholarshipApplicationContract.svc" />
     <Content Include="Contract\Implementation\StudentContract.svc" />
-    <Content Include="Contract\Implementation\Service1.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -77,11 +76,7 @@
     <Compile Include="Contract\Implementation\StudentContract.svc.cs">
       <DependentUpon>StudentContract.svc</DependentUpon>
     </Compile>
-    <Compile Include="Contract\Implementation\Service1.svc.cs">
-      <DependentUpon>Service1.svc</DependentUpon>
-    </Compile>
     <Compile Include="Contract\IScholarshipApplicationContract.cs" />
-    <Compile Include="Contract\IService1.cs" />
     <Compile Include="Contract\IStudentContract.cs" />
     <Compile Include="Contract\IScholarshipContract.cs" />
     <Compile Include="FileHandler\ScholarshipApplicationFileHandler.cs" />
