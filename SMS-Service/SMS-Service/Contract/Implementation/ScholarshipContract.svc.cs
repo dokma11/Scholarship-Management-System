@@ -9,7 +9,7 @@ namespace SMS_Service.Contract
     {
         private readonly ScholarshipService _scholarshipService;
 
-        public ScholarshipContract() 
+        public ScholarshipContract()
         {
             _scholarshipService = new ScholarshipService();
         }
@@ -37,7 +37,8 @@ namespace SMS_Service.Contract
             {
                 Console.WriteLine("Scholarship information not valid, so it won't be updated");
             }
-            else{
+            else
+            {
                 _scholarshipService.Update(scholarship);
             }
         }

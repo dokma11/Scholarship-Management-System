@@ -30,6 +30,7 @@ namespace SMS_Service.Repository
             application.ApprovalDate = DateTime.Now;
             _applications.Add(application);
             _fileHandler.Save(_applications);
+            Console.WriteLine("Application ID: " + application.ID.ToString());
         }
 
         public void HandleScholarship(int applicationId, bool approved)

@@ -1,6 +1,6 @@
 ﻿using SMS_Service.Model;
-using SMS_Service.Repository;
 using SMS_Service.Repository.Implementation;
+using SMS_Service.Repository.Injection;
 using System.Collections.Generic;
 
 namespace SMS_Service.Service
@@ -11,7 +11,7 @@ namespace SMS_Service.Service
 
         public StudentService()
         {
-            _studentRepository = new StudentRepository();
+            _studentRepository = Injector.CreateInstance<IStudentRepository>();
         }
 
         public void Create(Student student)

@@ -1,7 +1,7 @@
 ﻿using SMS_Service.Model;
+using SMS_Service.Repository.Injection;
 using SMS_Service.Repository.Implementation;
 using System.Collections.Generic;
-using SMS_Service.Repository;
 
 namespace SMS_Service.Service
 {
@@ -9,9 +9,9 @@ namespace SMS_Service.Service
     {
         private readonly IScholarshipRepository _scholarshipRepository;
 
-        public ScholarshipService() 
+        public ScholarshipService()
         {
-            _scholarshipRepository = new ScholarshipRepository();
+            _scholarshipRepository = Injector.CreateInstance<IScholarshipRepository>();
         }
 
         public void Create(Scholarship scholarship)

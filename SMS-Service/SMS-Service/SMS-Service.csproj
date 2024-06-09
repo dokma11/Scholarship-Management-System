@@ -90,6 +90,7 @@
     <Compile Include="Repository\Implementation\IScholarshipApplicationRepository.cs" />
     <Compile Include="Repository\Implementation\IScholarshipRepository.cs" />
     <Compile Include="Repository\Implementation\IStudentRepository.cs" />
+    <Compile Include="Repository\Injection\Injector.cs" />
     <Compile Include="Repository\ScholarshipApplicationRepository.cs" />
     <Compile Include="Repository\ScholarshipRepository.cs" />
     <Compile Include="Repository\StudentRepository.cs" />
