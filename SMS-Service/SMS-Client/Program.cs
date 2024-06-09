@@ -78,7 +78,7 @@ namespace SMS_Client
                         }
                         newStudent.IsDeleted = false;
                         client.CreateAsync(newStudent).Wait();
-                        Console.WriteLine("Student created successfully.");
+                        Console.WriteLine("Student create request sent.");
                         break;
                     case 2:
                         var updateStudent = new Student();
@@ -104,13 +104,13 @@ namespace SMS_Client
                             updateStudent.Education = StudentContractService.StudentEducation.University;
                         }                        
                         client.UpdateAsync(updateStudent).Wait();
-                        Console.WriteLine("Student updated successfully.");
+                        Console.WriteLine("Student update request sent.");
                         break;
                     case 3:
                         Console.WriteLine("Enter student ID to delete:");
                         int idToDelete = int.Parse(Console.ReadLine());
                         client.DeleteAsync(idToDelete).Wait();
-                        Console.WriteLine("Student deleted successfully.");
+                        Console.WriteLine("Student delete request sent.");
                         break;
                     case 4:
                         var students = client.GetAllAsync();
@@ -189,7 +189,7 @@ namespace SMS_Client
                         newScholarship.StudentLimit = int.Parse(Console.ReadLine());
                         newScholarship.IsDeleted = false;
                         client.CreateAsync(newScholarship).Wait();
-                        Console.WriteLine("Scholarship created successfully.");
+                        Console.WriteLine("Scholarship create request sent.");
                         break;
                     case 2:
                         var updateScholarship = new Scholarship();
@@ -221,13 +221,13 @@ namespace SMS_Client
                         Console.WriteLine("Enter student limit: ");
                         updateScholarship.StudentLimit = int.Parse(Console.ReadLine());
                         client.UpdateAsync(updateScholarship).Wait();
-                        Console.WriteLine("Scholarship updated successfully.");
+                        Console.WriteLine("Scholarship update request sent.");
                         break;
                     case 3:
                         Console.WriteLine("Enter scholarship ID to delete:");
                         int idToDelete = int.Parse(Console.ReadLine());
                         client.DeleteAsync(idToDelete).Wait();
-                        Console.WriteLine("Scholarship deleted successfully.");
+                        Console.WriteLine("Scholarship delete request sent.");
                         break;
                     case 4:
                         var scholarships = client.GetAllAsync();

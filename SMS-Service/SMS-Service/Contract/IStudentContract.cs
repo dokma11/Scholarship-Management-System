@@ -9,7 +9,7 @@ namespace SMS_Service.Contract
     public interface IStudentContract
     {
         [OperationContract]
-        Task Create(Student student);
+        void Create(Student student);
         
         [OperationContract]
         void Update(Student student);

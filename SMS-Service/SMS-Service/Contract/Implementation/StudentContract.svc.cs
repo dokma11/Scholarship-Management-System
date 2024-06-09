@@ -2,7 +2,6 @@
 using SMS_Service.Service;
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 
 namespace SMS_Service.Contract
 {
@@ -10,27 +9,43 @@ namespace SMS_Service.Contract
     {
         private readonly StudentService _studentService;
 
-        public StudentContract() 
+        public StudentContract()
         {
             _studentService = new StudentService();
         }
 
-        public async Task Create(Student student)
+        public void Create(Student student)
         {
             Console.WriteLine("Student contract create");
             student.ScholarshipApplications = new List<ScholarshipApplication>();
-            _studentService.Create(student);
+            if (student.FirstName.Length < 1 || student.LastName.Length < 1 || student.Email.Length < 1 || student.DateOfBirth.Length < 1 ||
+                student.GPA < 5.00 || student.IsDeleted == true)
+            {
+                Console.WriteLine("Student information not valid, student won't be created");
+            }
+            else
+            {
+                _studentService.Create(student);
+            }
         }
 
         public void Update(Student student)
         {
             Console.WriteLine("Student contract update");
-            _studentService.Update(student);
+            if (student.FirstName.Length < 1 || student.LastName.Length < 1 || student.Email.Length < 1 || student.DateOfBirth.Length < 1 ||
+                            student.GPA < 5.00 || student.IsDeleted == true)
+            {
+                Console.WriteLine("Student information not valid, student won't be updated");
+            }
+            else
+            {
+                _studentService.Update(student);
+            }
         }
 
         public void Delete(int id)
         {
-            Console.WriteLine("Student contract delete, id: " +  id);
+            Console.WriteLine("Student contract delete, id: " + id);
             _studentService.Delete(id);
         }
 

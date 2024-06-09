@@ -1,6 +1,7 @@
 ﻿using SMS_Service.FileHandler;
 using SMS_Service.Model;
 using SMS_Service.Repository.Implementation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -27,6 +28,7 @@ namespace SMS_Service.Repository
             scholarship.ID = NextId();
             _scholarships.Add(scholarship);
             _fileHandler.Save(_scholarships);
+            Console.WriteLine("Scholarship successfully created");
         }
 
         public void Update(Scholarship scholarship)
@@ -38,6 +40,7 @@ namespace SMS_Service.Repository
             }
 
             _fileHandler.Save(_scholarships);
+            Console.WriteLine("Scholarship successfully updated");
         }
 
         public void Delete(int id)
@@ -49,6 +52,7 @@ namespace SMS_Service.Repository
             }
 
             _fileHandler.Save(_scholarships);
+            Console.WriteLine("Scholarship successfully deleted");
         }
 
         public List<Scholarship> GetAll()
